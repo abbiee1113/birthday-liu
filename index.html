@@ -348,33 +348,36 @@
       </div>
     </div>
 
-    <!-- 礼物互动区 -->
     <section>
-      <h2 class="section-title">🍵 你的生日礼物</h2>
+      <h2 class="section-title">🎁 你的生日礼物</h2>
       <div class="gifts">
-        <div class="gift-box" onclick="toggleGiftContent('gift1')">📖 诗一首</div>
-        <div class="gift-box" onclick="toggleGiftContent('gift2')">🎧 一首BGM</div>
-        <div class="gift-box" onclick="toggleGiftContent('gift3')">🧶 像素风娃娃</div>
-        <div class="gift-box" onclick="toggleGiftContent('gift4')">🌸 动图祝福</div>
+        <!-- 第一件礼物：一首歌 -->
+        <div class="gift-box" onclick="toggleGiftContent('giftSong')">
+          🎧 一首歌
+        </div>
+        <!-- 第二件礼物：一个视频 -->
+        <div class="gift-box" onclick="toggleGiftContent('giftVideo')">
+          📺 一个视频
+        </div>
       </div>
 
-      <div id="gift1" class="gift-content">
-        <p>你可以在这里放一首你喜欢的短诗，或者自己写的生日祝福诗句。</p>
-      </div>
-      <div id="gift2" class="gift-content">
-        <p>你可以嵌入一个音乐播放器：</p>
+      <!-- 歌礼物内容 -->
+      <div id="giftSong" class="gift-content">
+        <p>这是我为你准备的一首特别的歌，点击播放欣赏吧。</p>
         <audio controls>
-          <source src="your_bgm.mp3" type="audio/mpeg">
+          <source src="your_song.mp3" type="audio/mpeg">
           你的浏览器不支持音频播放
         </audio>
       </div>
-      <div id="gift3" class="gift-content">
-        <p>像素风娃娃示例：</p>
-        <img src="pixel_doll.png" alt="Pixel Doll" style="width:100px;height:auto; image-rendering:pixelated;">
-      </div>
-      <div id="gift4" class="gift-content">
-        <p>你可以在这里加GIF动图背景，或直接写祝福文字。</p>
-        <img src="blessing.gif" alt="Blessing GIF" style="width:200px;height:auto;">
+
+      <!-- 视频礼物内容 -->
+      <div id="giftVideo" class="gift-content">
+        <p>这里可以放一个视频文件，或者嵌入在线视频链接。</p>
+        <!-- 本地视频示例 -->
+        <video width="320" height="240" controls>
+          <source src="your_video.mp4" type="video/mp4">
+          你的浏览器不支持HTML5视频
+        </video>
       </div>
     </section>
 
