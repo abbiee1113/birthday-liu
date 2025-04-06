@@ -3,13 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <title>Stardew Birthday Celebration</title>
-
-  <!-- 导入像素字体 + 手写体字体 -->
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
     @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
 
-    /* 页面全局：像素风 */
+    /* 全局使用像素风 */
     * {
       margin: 0; 
       padding: 0;
@@ -17,7 +15,7 @@
       font-family: 'Press Start 2P', monospace;
     }
 
-    /* 给歌词部分使用手写体的类 */
+    /* 手写体类 */
     .handwriting-lyrics {
       font-family: 'Shadows Into Light', cursive;
       font-size: 1rem;
@@ -25,7 +23,7 @@
       color: #582d0e;
     }
 
-    /* 背景：模糊图 */
+    /* 背景：模糊图片 */
     body {
       background: url("birthday_bg_blurred.png") center/cover no-repeat;
     }
@@ -36,7 +34,7 @@
       padding: 1rem;
     }
 
-    /* 标题文字：白色 + 像素风 */
+    /* 标题文字 */
     .section-title {
       text-align: center;
       font-size: 1.6rem;
@@ -75,7 +73,6 @@
       color: #582d0e;
     }
 
-    /* 村民 */
     .villagers {
       display: flex;
       flex-wrap: wrap;
@@ -100,7 +97,7 @@
       text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
     }
 
-    /* 弹窗 */
+    /* 弹窗样式 */
     .modal-overlay {
       position: fixed;
       top: 0;
@@ -122,7 +119,7 @@
       font-size: 1rem;
     }
 
-    /* 礼物互动区：一首歌+一个视频 */
+    /* 礼物互动区 */
     .gifts {
       display: flex;
       flex-wrap: wrap;
@@ -173,30 +170,7 @@
       font-size: 0.9rem;
     }
 
-    /* 结束语：改成覆盖层形式，和开场一样 */
-    .ending-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.8); /* 半透明或纯色都行 */
-      z-index: 9999;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
-    .ending-content {
-      color: #fff;
-      max-width: 600px;
-      padding: 1rem;
-      background: rgba(255, 245, 195, 0.9);
-      border: 4px solid #835e29;
-      font-size: 1rem;
-    }
-
-    /* 开场动画 overlay */
+    /* 开场动画 */
     .intro-overlay {
       position: fixed;
       top: 0; 
@@ -239,10 +213,34 @@
       cursor: pointer;
       font-size: 0.8rem;
     }
+
+    /* 结束语棕色遮罩 */
+    .ending-overlay {
+      position: fixed;
+      top: 0; 
+      left: 0;
+      width: 100vw; 
+      height: 100vh;
+      background: rgba(131, 94, 41, 0.8); /* 棕色半透明 */
+      z-index: 9999;
+      display: none; 
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .ending-content {
+      color: #fff;
+      max-width: 600px;
+      padding: 1rem;
+      background: rgba(255, 245, 195, 0.9);
+      border: 4px solid #835e29;
+      font-size: 1rem;
+    }
   </style>
 </head>
 <body>
-  <!-- 开场动画 overlay -->
+
+  <!-- 开场动画 -->
   <div class="intro-overlay" id="introOverlay">
     <div class="intro-content">
       <img src="pixel_zhanglinghe.png" alt="像素风张凌赫" />
@@ -260,7 +258,7 @@
     </div>
   </div>
 
-  <!-- 新增：结束语 overlay -->
+  <!-- 结束语遮罩 (点击许愿后立即出现2秒) -->
   <div class="ending-overlay" id="endingOverlay">
     <div class="ending-content">
       <p>春天的梦，夏天的风，世界正中💖</p>
@@ -268,7 +266,7 @@
   </div>
 
   <div class="container">
-    <!-- Welcome -->
+    <!-- 首页 / Welcome -->
     <section class="welcome-section">
       <h1 class="section-title">🌼 Stardew Birthday</h1>
       <div class="welcome-banner">门口挂着生日横幅</div>
@@ -279,29 +277,29 @@
 
     <!-- 村民送礼页面 -->
     <section>
-      <h2 class="section-title">此时此刻我们想对你说：</h2>
+      <h2 class="section-title">🎁 村民送礼</h2>
       <div class="villagers">
-        <!-- 典典 -->
+        <!-- 1. 典典 -->
         <div class="villager" onclick="openModal('modal1')">
           <img src="villager_diandian.png" alt="典典">
           <p>典典</p>
         </div>
-        <!-- 猫猫 -->
+        <!-- 2. 猫猫 -->
         <div class="villager" onclick="openModal('modal2')">
           <img src="villager_maomao.png" alt="猫猫">
           <p>猫猫</p>
         </div>
-        <!-- 鱼鱼 -->
+        <!-- 3. 鱼鱼 -->
         <div class="villager" onclick="openModal('modal3')">
           <img src="villager_yuyu.png" alt="鱼鱼">
           <p>鱼鱼</p>
         </div>
-        <!-- 鑫鑫 -->
+        <!-- 4. 鑫鑫 -->
         <div class="villager" onclick="openModal('modal4')">
           <img src="villager_xinxin.png" alt="鑫鑫">
           <p>鑫鑫</p>
         </div>
-        <!-- 婷婷 -->
+        <!-- 5. 婷婷 -->
         <div class="villager" onclick="openModal('modal5')">
           <img src="villager_tingting.png" alt="婷婷">
           <p>婷婷</p>
@@ -309,7 +307,7 @@
       </div>
     </section>
 
-    <!-- 模态弹窗 -->
+    <!-- 弹窗内容 -->
     <div id="modalOverlay" class="modal-overlay" onclick="closeModal()">
       <!-- 典典 -->
       <div class="modal" id="modal1">
@@ -374,21 +372,19 @@
       </div>
     </div>
 
-    <!-- 礼物：一首歌 + 一个视频 -->
+    <!-- 礼物互动区：一首歌+一个视频 -->
     <section>
       <h2 class="section-title">🎁 你的生日礼物</h2>
       <div class="gifts">
-        <!-- 歌 -->
         <div class="gift-box" onclick="toggleGiftContent('giftSong')">
           🎧 一首歌
         </div>
-        <!-- 视频 -->
         <div class="gift-box" onclick="toggleGiftContent('giftVideo')">
           📺 一个视频
         </div>
       </div>
 
-      <!-- 歌的内容 -->
+      <!-- 歌礼物内容 -->
       <div id="giftSong" class="gift-content">
         <p>这是我为你准备的一首特别的歌，点击播放欣赏吧。</p>
         <audio controls>
@@ -410,69 +406,11 @@
                     border:1px dashed #835e29;
                     margin-top:1rem;
                     padding:0.5rem;">
-          <!-- 这里是歌词内容 -->
-          <p>Yesterday I found a book on how to love<br>
-          Took the title, changed the cover<br>
-          Made every line repeat your name — like a prayer</p>
-
-          <p>四月的风 轻拂泰晤士岸<br>
-          落花绕着你步伐旋转<br>
-          你眼里 藏着心跳的开关<br>
-          每次你眨眼 我就听见你说：<br>
-          Good morning.</p>
-
-          <p>教学楼雨滴 敲成节奏<br>
-          你手机画面 谁的侧脸停留<br>
-          Mr.张的对白 正好落进镜头<br>
-          才懂沉默也是你在为爱合奏<br>
-          Even silence has its melody<br>
-          When it’s you and me</p>
-
-          <p>月光洒下的那一刻<br>
-          你的笑容胜过世间一切绝色<br>
-          倒数的时间 心跳刚好配合<br>
-          You were blooming… blooming — beat by beat</p>
-
-          <p>四月的樱草  悄悄在角落绽放<br>
-          你轻轻哼唱 风写下的乐章<br>
-          每次一撒娇 就融化我心房<br>
-          原来我喜欢 你的一切模样<br>
-          连无言都充满希望<br>
-          这世界如此大我们却相遇身旁<br>
-          感谢命运让我们彼此相望</p>
-
-          <p>You turn small storms into lavender steam<br>
-          You danced with the rain like it knew your name<br>
-          You made Thursdays feel like holidays<br>
-          And the quiet hours hum your name<br>
-          You’re not the sun, but you warm my days<br>
-          Not a singer, but I hear you always<br>
-          Some hearts don’t need to shout to be heard<br>
-          You’re the melody we always needed</p>
-
-          <p>今夜曼彻斯特低声吟唱<br>
-          月光盲盒再次轻响<br>
-          蜡烛点燃属于你的乐章</p>
-
-          <p>Ooh, ooh<br>
-          You make my world go boom<br>
-          So much for a chapter two<br>
-          If we choose life, then our story's just begun<br>
-          Ooh, ooh<br>
-          You make my world go boom<br>
-          And we could be chapter us</p>
-
-          <p>这一章 名为 neverending<br>
-          Happy birthday to our prism girl<br>
-          当未来再次响起这首歌<br>
-          Hope You’ll remember<br>
-          that you were loved, here<br>
-          in this chorus we keep close.<br>
-          We keep close from now until forever.</p>
+          <p>这里写下你的歌词...</p>
         </div>
       </div>
 
-      <!-- 视频内容 -->
+      <!-- 视频礼物内容 -->
       <div id="giftVideo" class="gift-content">
         <p>公主萌物照片大赏</p>
         <video width="320" height="240" controls>
@@ -516,22 +454,37 @@
       document.getElementById('modalOverlay').style.display = 'none';
     }
 
-    /* 礼物区域的显示/隐藏 */
+    /* 礼物互动显示/隐藏 */
     function toggleGiftContent(giftId) {
       const content = document.getElementById(giftId);
-      content.style.display = content.style.display === 'block' ? 'none' : 'block';
+      content.style.display = (content.style.display === 'block') ? 'none' : 'block';
     }
 
-    /* 歌词的显示/隐藏 */
+    /* 歌词显示/隐藏 */
     function toggleLyrics() {
       let lyricsDiv = document.getElementById('lyricsBox');
-      lyricsDiv.style.display = (lyricsDiv.style.display === 'none') ? 'block' : 'none';
+      if (lyricsDiv.style.display === 'none') {
+        lyricsDiv.style.display = 'block';
+      } else {
+        lyricsDiv.style.display = 'none';
+      }
     }
 
-    /* 许愿后 -> 3秒后显示结束语 overlay -> 再3秒后自动收起 */
+    /* 显示结束语遮罩 -> 2秒后自动收起 */
+    function showEndingOverlay() {
+      const endingOverlay = document.getElementById('endingOverlay');
+      endingOverlay.style.display = 'flex'; // 立即显示
+      // 2秒后自动隐藏
+      setTimeout(() => {
+        endingOverlay.style.display = 'none';
+      }, 2000);
+    }
+
+    /* 许愿池：输入心愿后立即出现结束语2秒 */
     function throwCoin() {
       const inputVal = document.getElementById('wishInput').value.trim();
       const wishResponse = document.getElementById('wishResponse');
+
       if (inputVal) {
         wishResponse.innerHTML = "风听见了，你说的：" + inputVal + "。它会替你记住。";
         wishResponse.style.display = 'block';
@@ -540,19 +493,11 @@
         wishResponse.style.display = 'block';
       }
 
-      // 3秒后显示"结束语" overlay
-      setTimeout(() => {
-        const endingOverlay = document.getElementById('endingOverlay');
-        endingOverlay.style.display = 'flex';
-
-        // 再过3秒自动隐藏
-        setTimeout(() => {
-          endingOverlay.style.display = 'none';
-        }, 3000);
-
-      }, 3000);
+      // 立即显示EndingOverlay，2秒后消失
+      showEndingOverlay();
     }
   </script>
 </body>
 </html>
+
 
