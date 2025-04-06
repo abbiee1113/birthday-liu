@@ -148,7 +148,7 @@
       display: none;
     }
 
-    /* 开场动画覆盖层 */
+    /* 开场动画覆盖层，若不需要也可删掉 */
     .intro-overlay {
       position: fixed;
       top: 0; left: 0;
@@ -192,26 +192,19 @@
 </head>
 <body>
 
-  <!-- 开场动画覆盖层 -->
+  <!-- 开场动画覆盖层（可选） -->
   <div class="intro-overlay" id="introOverlay">
     <div class="intro-content">
-      <!-- 像素风张凌赫 - 你需要准备一张像素图 -->
       <img src="pixel_zhanglinghe.png" alt="像素风张凌赫" />
-
-      <!-- 去掉 autoplay，改为手动点击播放 -->
       <audio id="introAudio">
         <source src="zhanglinghe_happy_birthday.mp3" type="audio/mpeg">
         你的浏览器不支持音频播放
       </audio>
-
       <div class="intro-dialog">
         <p>「今天是你出生的那天。我想第一个说喜欢你的人是我。」</p>
       </div>
-
       <div class="intro-buttons">
-        <!-- 按钮1：播放音频 -->
         <button onclick="playZlhAudio()">点击即听张凌赫想对你说的话</button>
-        <!-- 按钮2：关闭overlay，进入页面 -->
         <button onclick="closeIntro()">进入农场</button>
       </div>
     </div>
@@ -231,45 +224,50 @@
     <section>
       <h2 class="section-title">🎁 村民送礼</h2>
       <div class="villagers">
+        <!-- 改为典典 -->
         <div class="villager" onclick="openModal('modal1')">
-          <img src="villager1.png" alt="村民1">
-          <p>村民1</p>
+          <img src="villager_diandian.png" alt="典典">
+          <p>典典</p>
         </div>
+        <!-- 改为猫猫 -->
         <div class="villager" onclick="openModal('modal2')">
-          <img src="villager2.png" alt="村民2">
-          <p>村民2</p>
+          <img src="villager_maomao.png" alt="猫猫">
+          <p>猫猫</p>
         </div>
+        <!-- 改为鱼鱼 -->
         <div class="villager" onclick="openModal('modal3')">
-          <img src="villager3.png" alt="村民3">
-          <p>村民3</p>
+          <img src="villager_yuyu.png" alt="鱼鱼">
+          <p>鱼鱼</p>
         </div>
+        <!-- 改为鑫鑫 -->
         <div class="villager" onclick="openModal('modal4')">
-          <img src="villager4.png" alt="村民4">
-          <p>村民4</p>
+          <img src="villager_xinxin.png" alt="鑫鑫">
+          <p>鑫鑫</p>
         </div>
+        <!-- 改为婷婷 -->
         <div class="villager" onclick="openModal('modal5')">
-          <img src="villager5.png" alt="村民5">
-          <p>村民5</p>
+          <img src="villager_tingting.png" alt="婷婷">
+          <p>婷婷</p>
         </div>
       </div>
     </section>
 
-    <!-- 5个弹窗示例 -->
+    <!-- 五个弹窗示例，对应典典、猫猫、鱼鱼、鑫鑫、婷婷 -->
     <div id="modalOverlay" class="modal-overlay" onclick="closeModal()">
       <div class="modal" id="modal1">
-        <p>我还记得你去年冬天一直陪我走过那段忙乱的日子。<br>今天，换我陪你慢一点，好吗？</p>
+        <p>典典：我还记得你去年冬天一直陪我走过那段忙乱的日子。<br>今天，换我陪你慢一点，好吗？</p>
       </div>
       <div class="modal" id="modal2">
-        <p>你总是在我最需要的时候出现。很幸运能认识你，生日快乐。</p>
+        <p>猫猫：你总是在我最需要的时候出现。很幸运能认识你，生日快乐。</p>
       </div>
       <div class="modal" id="modal3">
-        <p>多希望一起去海边晒太阳，再一起记录那些灿烂的回忆。</p>
+        <p>鱼鱼：多希望一起去海边晒太阳，再一起记录那些灿烂的回忆。</p>
       </div>
       <div class="modal" id="modal4">
-        <p>你说过春天有股让人想尝试新事物的魔力。<br>愿你今年的每一步都带着这份勇气。</p>
+        <p>鑫鑫：你说过春天有股让人想尝试新事物的魔力。<br>愿你今年的每一步都带着这份勇气。</p>
       </div>
       <div class="modal" id="modal5">
-        <p>谢谢你那天深夜的陪伴和建议。<br>现在轮到我来陪你一起庆祝这一天。</p>
+        <p>婷婷：谢谢你那天深夜的陪伴和建议。<br>现在轮到我来陪你一起庆祝这一天。</p>
       </div>
     </div>
 
@@ -320,7 +318,7 @@
   </div>
 
   <script>
-    // —— 开场动画相关 —— 
+    // —— 开场动画相关（可选） —— 
     function playZlhAudio() {
       const audio = document.getElementById('introAudio');
       audio.play().catch((err) => {
@@ -361,7 +359,7 @@
       }
     }
 
-    // —— 如果要自动显示结束语，可在需要时机调用 —— 
+    // —— 若想自动显示结束语，可在需要时机调用 —— 
     // window.addEventListener('load', () => {
     //   setTimeout(() => {
     //     document.getElementById('endingDialog').style.display = 'block';
@@ -370,3 +368,4 @@
   </script>
 </body>
 </html>
+
