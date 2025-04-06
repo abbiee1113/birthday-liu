@@ -10,9 +10,16 @@
       box-sizing: border-box;
       font-family: "Microsoft YaHei", sans-serif;
     }
+    /* 给整个页面加背景图 */
     body {
-      background: #c5ab79;
+      margin: 0;
+      padding: 0;
+      background: url("birthday_bg_blurred.png") center/cover no-repeat;
+      /* 如果想让背景在滚动时固定，可加上这句: 
+         background-attachment: fixed; 
+      */
     }
+
     .container {
       max-width: 800px;
       margin: 0 auto;
@@ -24,10 +31,12 @@
       margin: 1rem 0;
       color: #582d0e;
     }
+
+    /* 去掉 welcome-section 的背景 */
     .welcome-section {
       position: relative;
       padding: 2rem;
-      background: url('farm_sunrise_placeholder.png') center/cover no-repeat; 
+      background: transparent; /* 原本是 url(...)，现改为透明 */
       text-align: center;
       color: #fff;
       border: 4px solid #835e29;
@@ -148,7 +157,7 @@
       display: none;
     }
 
-    /* 开场动画覆盖层，若不需要也可删掉 */
+    /* 开场动画覆盖层（若不需要可删） */
     .intro-overlay {
       position: fixed;
       top: 0; left: 0;
@@ -224,27 +233,27 @@
     <section>
       <h2 class="section-title">🎁 村民送礼</h2>
       <div class="villagers">
-        <!-- 改为典典 -->
+        <!-- 典典 -->
         <div class="villager" onclick="openModal('modal1')">
           <img src="villager_diandian.png" alt="典典">
           <p>典典</p>
         </div>
-        <!-- 改为猫猫 -->
+        <!-- 猫猫 -->
         <div class="villager" onclick="openModal('modal2')">
           <img src="villager_maomao.png" alt="猫猫">
           <p>猫猫</p>
         </div>
-        <!-- 改为鱼鱼 -->
+        <!-- 鱼鱼 -->
         <div class="villager" onclick="openModal('modal3')">
           <img src="villager_yuyu.png" alt="鱼鱼">
           <p>鱼鱼</p>
         </div>
-        <!-- 改为鑫鑫 -->
+        <!-- 鑫鑫 -->
         <div class="villager" onclick="openModal('modal4')">
           <img src="villager_xinxin.png" alt="鑫鑫">
           <p>鑫鑫</p>
         </div>
-        <!-- 改为婷婷 -->
+        <!-- 婷婷 -->
         <div class="villager" onclick="openModal('modal5')">
           <img src="villager_tingting.png" alt="婷婷">
           <p>婷婷</p>
@@ -252,7 +261,7 @@
       </div>
     </section>
 
-    <!-- 五个弹窗示例，对应典典、猫猫、鱼鱼、鑫鑫、婷婷 -->
+    <!-- 五个弹窗示例 -->
     <div id="modalOverlay" class="modal-overlay" onclick="closeModal()">
       <div class="modal" id="modal1">
         <p>典典：我还记得你去年冬天一直陪我走过那段忙乱的日子。<br>今天，换我陪你慢一点，好吗？</p>
@@ -318,7 +327,6 @@
   </div>
 
   <script>
-    // —— 开场动画相关（可选） —— 
     function playZlhAudio() {
       const audio = document.getElementById('introAudio');
       audio.play().catch((err) => {
@@ -359,7 +367,7 @@
       }
     }
 
-    // —— 若想自动显示结束语，可在需要时机调用 —— 
+    // —— 如果要自动显示结束语，可加定时或手动触发 —— 
     // window.addEventListener('load', () => {
     //   setTimeout(() => {
     //     document.getElementById('endingDialog').style.display = 'block';
@@ -368,4 +376,5 @@
   </script>
 </body>
 </html>
+
 
