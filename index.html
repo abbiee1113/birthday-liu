@@ -3,31 +3,45 @@
 <head>
   <meta charset="UTF-8">
   <title>Stardew Birthday Celebration</title>
+  <!-- 在这里引入 Google Fonts 中的 Press Start 2P -->
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
     * {
-      margin: 0; 
+      margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Microsoft YaHei", sans-serif;
+      /* 把全局字体换成像素风 */
+      font-family: 'Press Start 2P', monospace;
     }
+
+    /* 整页背景：模糊图片 */
     body {
-      background: #c5ab79;
+      background: url("birthday_bg_blurred.png") center/cover no-repeat;
+      /* 如果想让背景固定不动，可加:
+         background-attachment: fixed; 
+      */
     }
+
     .container {
       max-width: 800px;
       margin: 0 auto;
       padding: 1rem;
     }
+
+    /* 保持标题白色 + 像素字体 */
     .section-title {
       text-align: center;
-      font-size: 1.8rem;
+      font-size: 1.6rem; /* 原来是1.8rem，Press Start 2P字比较紧凑，可以稍微调一下 */
       margin: 1rem 0;
-      color: #582d0e;
+      color: #fff;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
     }
+
     .welcome-section {
       position: relative;
       padding: 2rem;
-      background: url('farm_sunrise_placeholder.png') center/cover no-repeat; 
+      background: transparent;
       text-align: center;
       color: #fff;
       border: 4px solid #835e29;
@@ -38,7 +52,7 @@
       padding: 0.5rem 1rem;
       background: rgba(255, 245, 195, 0.8);
       color: #835e29;
-      font-size: 1.2rem;
+      font-size: 1rem; /* 调整一点，避免Press Start 2P过大 */
       border: 2px solid #835e29;
     }
     .dialog-box {
@@ -47,12 +61,13 @@
       background: #fff5c3;
       border: 4px solid #835e29;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      font-size: 1.1rem;
+      font-size: 1rem;
       max-width: 600px;
       margin-left: auto;
       margin-right: auto;
       color: #582d0e;
     }
+
     .villagers {
       display: flex;
       flex-wrap: wrap;
@@ -72,12 +87,14 @@
     }
     .villager p {
       margin-top: 0.5rem;
-      font-size: 0.9rem;
-      color: #582d0e;
+      font-size: 0.7rem; /* Press Start 2P比较大，可以适当缩小 */
+      color: #fff;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
     }
+
     .modal-overlay {
       position: fixed;
-      top: 0; 
+      top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
@@ -93,7 +110,9 @@
       max-width: 400px;
       text-align: center;
       color: #582d0e;
+      font-size: 1rem;
     }
+
     .gifts {
       display: flex;
       flex-wrap: wrap;
@@ -108,7 +127,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1rem;
+      font-size: 0.8rem;
       color: #835e29;
       cursor: pointer;
       text-align: center;
@@ -120,8 +139,10 @@
       border: 2px dashed #835e29;
       margin-top: 1rem;
       padding: 1rem;
-      font-size: 1rem;
+      font-size: 0.9rem;
+      color: #582d0e;
     }
+
     .wish-section {
       text-align: center;
       margin: 2rem 0;
@@ -129,6 +150,7 @@
     .wish-section input {
       padding: 0.5rem;
       margin-right: 0.5rem;
+      font-size: 0.8rem;
     }
     .wish-response {
       margin-top: 1rem;
@@ -137,7 +159,9 @@
       border: 2px dashed #835e29;
       display: none;
       color: #582d0e;
+      font-size: 0.9rem;
     }
+
     .ending-dialog {
       margin: 2rem 0;
       padding: 1rem;
@@ -146,13 +170,16 @@
       text-align: center;
       color: #582d0e;
       display: none;
+      font-size: 0.9rem;
     }
 
-    /* 开场动画覆盖层，若不需要也可删掉 */
+    /* 开场动画覆盖层（可选） */
     .intro-overlay {
       position: fixed;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
+      top: 0; 
+      left: 0;
+      width: 100vw; 
+      height: 100vh;
       background: #000;
       z-index: 9999;
       display: flex;
@@ -178,7 +205,7 @@
       border: 4px solid #835e29;
       padding: 1rem;
       color: #582d0e;
-      font-size: 1.1rem;
+      font-size: 0.9rem;
     }
     .intro-buttons {
       margin-top: 1rem;
@@ -187,11 +214,11 @@
       margin: 0.5rem;
       padding: 0.5rem 1rem;
       cursor: pointer;
+      font-size: 0.8rem;
     }
   </style>
 </head>
 <body>
-
   <!-- 开场动画覆盖层（可选） -->
   <div class="intro-overlay" id="introOverlay">
     <div class="intro-content">
@@ -213,7 +240,7 @@
   <div class="container">
     <!-- 首页 / Welcome -->
     <section class="welcome-section">
-      <h1 class="section-title" style="color:#fff;">🌼 Stardew Birthday</h1>
+      <h1 class="section-title">🌼 Stardew Birthday</h1>
       <div class="welcome-banner">门口挂着生日横幅</div>
       <div class="dialog-box">
         <p>「今天是 <strong>XXX</strong> 的生日。<br>农场里的人都为TA准备了一些特别的东西。」</p>
@@ -224,27 +251,22 @@
     <section>
       <h2 class="section-title">🎁 村民送礼</h2>
       <div class="villagers">
-        <!-- 改为典典 -->
         <div class="villager" onclick="openModal('modal1')">
           <img src="villager_diandian.png" alt="典典">
           <p>典典</p>
         </div>
-        <!-- 改为猫猫 -->
         <div class="villager" onclick="openModal('modal2')">
           <img src="villager_maomao.png" alt="猫猫">
           <p>猫猫</p>
         </div>
-        <!-- 改为鱼鱼 -->
         <div class="villager" onclick="openModal('modal3')">
           <img src="villager_yuyu.png" alt="鱼鱼">
           <p>鱼鱼</p>
         </div>
-        <!-- 改为鑫鑫 -->
         <div class="villager" onclick="openModal('modal4')">
           <img src="villager_xinxin.png" alt="鑫鑫">
           <p>鑫鑫</p>
         </div>
-        <!-- 改为婷婷 -->
         <div class="villager" onclick="openModal('modal5')">
           <img src="villager_tingting.png" alt="婷婷">
           <p>婷婷</p>
@@ -252,42 +274,22 @@
       </div>
     </section>
 
-    <!-- 五个弹窗示例，对应典典、猫猫、鱼鱼、鑫鑫、婷婷 -->
+    <!-- 5个弹窗示例 -->
     <div id="modalOverlay" class="modal-overlay" onclick="closeModal()">
       <div class="modal" id="modal1">
-        <p>芮芮公主！本王带领众🐶为公主殿下👑庆生！生日快乐这位本王之后的枕边人（脸热热） 新的一岁除了每天跟张凌赫睡一张床以外 记得也要寻找自己的乌鲁鲁星！ 今夜你看到的星光全是你开心时的evol，这份光亮会伴随小王妃我的小公主每一天～ </p>
+        <p>典典：我还记得你去年冬天一直陪我走过那段忙乱的日子。<br>今天，换我陪你慢一点，好吗？</p>
       </div>
       <div class="modal" id="modal2">
-        <p>🎀祝芮芮公主生日快乐！希望你以后遇到的都是温暖的人和不费力的快乐。无论走到哪儿，都可以一直做快乐的小公主，不管做什么都能被好好爱着。
-生日这天，整个宇宙都在偷偷偏爱你。永远开心呀，我亲爱的芮芮 💗</p>
+        <p>猫猫：你总是在我最需要的时候出现。很幸运能认识你，生日快乐。</p>
       </div>
       <div class="modal" id="modal3">
-        <p>🎂新的一岁，希望咱芮芮所有的等待都有回响，所有的热爱都不被辜负。愿你喜欢的事物恰好出现，盼望的人刚好在身边。
-
-在这特别的一天，想郑重其事地说一句：
-祝愿在春天诞生于这个世界的你，永远幸福，永远被温柔以待。
-生日快乐呀，芮芮🌸
-
-最后郑重声明：
-本锦鲤已正式上线，你今天的所有愿望都免检通关！✨🐟</p>
+        <p>鱼鱼：多希望一起去海边晒太阳，再一起记录那些灿烂的回忆。</p>
       </div>
       <div class="modal" id="modal4">
-        <p>亲爱的芮芮公主：
-希望你每天被阳光环绕，被幸福拥抱，无论世界如何变化，你永远是被偏爱的小公主。生日也好，每一个平凡的日子也好，都会因为你的存在而闪闪发光。
-愿你的每一个生日都如今天般美好，愿你的未来如星辰般璀璨。愿你永远被温柔以待，拥有勇敢追逐梦想的力量。
-<br>爱你的
-<br>妈咪酱</p>
+        <p>鑫鑫：你说过春天有股让人想尝试新事物的魔力。<br>愿你今年的每一步都带着这份勇气。</p>
       </div>
       <div class="modal" id="modal5">
-        <p>今天 芮芮公主生日了 这个时候生日的人 是未来之星 是国家栋梁 是都市小说的商业大鳄 是吾日三省吾身的自律者 是相亲节目里的心动嘉宾 是自然界的丛林之王 是世间所有丑与恶的唾弃者 是世间所有美与好的创作者 芮皇驾到芮家军集合喊生日快乐！！天真烂漫🍹活泼可爱💃聪明善良☁️ 重情重义💖 乐于助人🍷 人气TOP1🔥  完美小姐🌸 风光无限顶流芮❕ 
-看到这里你可能问这段抽象的话除了真诚的夸赞到底还有什么意义？
-你太聪明了，
-生命没有那么多意义，
-祝你生动，每一次出场都自带光芒滤镜，
-不迎合不迟疑，刚刚好地做自己。
-祝你有一万次闪耀和毫不费力的欢喜，
-祝你是你，
-无所谓意义。</p>
+        <p>婷婷：谢谢你那天深夜的陪伴和建议。<br>现在轮到我来陪你一起庆祝这一天。</p>
       </div>
     </div>
 
@@ -338,7 +340,6 @@
   </div>
 
   <script>
-    // —— 开场动画相关（可选） —— 
     function playZlhAudio() {
       const audio = document.getElementById('introAudio');
       audio.play().catch((err) => {
@@ -349,7 +350,6 @@
       document.getElementById('introOverlay').style.display = 'none';
     }
 
-    // —— 村民祝福弹窗 —— 
     function openModal(modalId) {
       document.getElementById('modalOverlay').style.display = 'flex';
       const modals = document.querySelectorAll('.modal');
@@ -360,13 +360,11 @@
       document.getElementById('modalOverlay').style.display = 'none';
     }
 
-    // —— 礼物互动显示/隐藏 —— 
     function toggleGiftContent(giftId) {
       const content = document.getElementById(giftId);
       content.style.display = content.style.display === 'block' ? 'none' : 'block';
     }
 
-    // —— 许愿池 —— 
     function throwCoin() {
       const inputVal = document.getElementById('wishInput').value.trim();
       const wishResponse = document.getElementById('wishResponse');
@@ -379,7 +377,7 @@
       }
     }
 
-    // —— 若想自动显示结束语，可在需要时机调用 —— 
+    // 如果要自动显示结束语，可在需要时机调用
     // window.addEventListener('load', () => {
     //   setTimeout(() => {
     //     document.getElementById('endingDialog').style.display = 'block';
