@@ -535,13 +535,35 @@
       }
     }
 
-    // 如果要自动显示结束语，可在需要时机加定时触发
-    // window.addEventListener('load', () => {
-    //   setTimeout(() => {
-    //     document.getElementById('endingDialog').style.display = 'block';
-    //   }, 10000);
-    // });
-  </script>
-</body>
-</html>
+    <!-- 1) 在HTML里更改结束语内容 -->
+<div id="endingDialog" class="ending-dialog">
+  <p>春天的梦，夏天的风，世界正中💖</p>
+</div>
+
+<!-- 2) 在 throwCoin() 函数中添加定时显示和自动隐藏的逻辑 -->
+<script>
+function throwCoin() {
+  const inputVal = document.getElementById('wishInput').value.trim();
+  const wishResponse = document.getElementById('wishResponse');
+  if (inputVal) {
+    wishResponse.innerHTML = "风听见了，你说的：" + inputVal + "。它会替你记住。";
+    wishResponse.style.display = 'block';
+  } else {
+    wishResponse.innerHTML = "好像什么都没说？试着输入一个心愿吧。";
+    wishResponse.style.display = 'block';
+  }
+
+  // 5秒后显示结束语
+  setTimeout(() => {
+    const endingDialog = document.getElementById('endingDialog');
+    endingDialog.style.display = 'block';
+
+    // 再过5秒自动隐藏结束语
+    setTimeout(() => {
+      endingDialog.style.display = 'none';
+    }, 5000);
+
+  }, 5000);
+}
+</script>
 
