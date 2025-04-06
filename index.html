@@ -3,23 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <title>Stardew Birthday Celebration</title>
-  <!-- 如无需像素风，可移除此处 Google Fonts -->
+
+  <!-- 导入像素字体 + 手写体字体 -->
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap');
 
+    /* 页面全局：像素风 */
     * {
       margin: 0; 
       padding: 0;
       box-sizing: border-box;
-      /* 全局使用像素风字体 */
       font-family: 'Press Start 2P', monospace;
     }
 
-    /* 整页背景：模糊图片 */
+    /* 给歌词部分使用手写体的类 */
+    .handwriting-lyrics {
+      font-family: 'Shadows Into Light', cursive;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #582d0e;
+    }
+
+    /* 背景：模糊图 */
     body {
       background: url("birthday_bg_blurred.png") center/cover no-repeat;
-      /* 如想背景随滚动固定：
-         background-attachment: fixed; 
+      /* 如果想背景随滚动固定，可加:
+         background-attachment: fixed;
       */
     }
 
@@ -219,7 +229,7 @@
   </style>
 </head>
 <body>
-  <!-- 开场动画覆盖层（可选） -->
+  <!-- 开场动画覆盖层（可删） -->
   <div class="intro-overlay" id="introOverlay">
     <div class="intro-content">
       <img src="pixel_zhanglinghe.png" alt="像素风张凌赫" />
@@ -247,7 +257,7 @@
       </div>
     </section>
 
-    <!-- 村民送礼页面 -->
+    <!-- 村民送礼页面（五位） -->
     <section>
       <h2 class="section-title">🎁 村民送礼</h2>
       <div class="villagers">
@@ -256,7 +266,7 @@
           <img src="villager_diandian.png" alt="典典">
           <p>典典</p>
         </div>
-        <!-- 2. 猫猫（已改过，无需再改） -->
+        <!-- 2. 猫猫 -->
         <div class="villager" onclick="openModal('modal2')">
           <img src="villager_maomao.png" alt="猫猫">
           <p>猫猫</p>
@@ -290,7 +300,7 @@
         </p>
       </div>
 
-      <!-- modal2: 猫猫（不动，之前已改） -->
+      <!-- modal2: 猫猫 -->
       <div class="modal" id="modal2">
         <p>🎀祝芮芮公主生日快乐！<br>
           希望你以后遇到的都是温暖的人和不费力的快乐。<br>
@@ -348,6 +358,7 @@
       </div>
     </div>
 
+    <!-- 礼物互动区：一首歌+一个视频 -->
     <section>
       <h2 class="section-title">🎁 你的生日礼物</h2>
       <div class="gifts">
@@ -368,95 +379,87 @@
           <source src="your_song.mp3" type="audio/mpeg">
           你的浏览器不支持音频播放
         </audio>
+
+        <!-- 按钮：查看/收起歌词 -->
+        <div style="margin-top:1rem;">
+          <button onclick="toggleLyrics()">查看 / 收起歌词</button>
+        </div>
+
+        <!-- 歌词内容（默认隐藏），带手写体 class + 可滚动 -->
+        <div id="lyricsBox" class="handwriting-lyrics"
+             style="display:none;
+                    max-height:200px;
+                    overflow-y:auto;
+                    background:#fff5c3;
+                    border:1px dashed #835e29;
+                    margin-top:1rem;
+                    padding:0.5rem;">
+          <!-- 在这里写下你的歌词 -->
+          <p>Yesterday I found a book on how to love<br>
+          Took the title, changed the cover<br>
+          Made every line repeat your name — like a prayer</p>
+
+          <p>四月的风 轻拂泰晤士岸<br>
+          落花绕着你步伐旋转<br>
+          你眼里 藏着心跳的开关<br>
+          每次你眨眼 我就听见你说：<br>
+          Good morning.</p>
+
+          <p>教学楼雨滴 敲成节奏<br>
+          你手机画面 谁的侧脸停留<br>
+          Mr.张的对白 正好落进镜头<br>
+          才懂沉默也是你在为爱合奏<br>
+          Even silence has its melody<br>
+          When it’s you and me</p>
+
+          <p>月光洒下的那一刻<br>
+          你的笑容胜过世间一切绝色<br>
+          倒数的时间 心跳刚好配合<br>
+          You were blooming… blooming — beat by beat</p>
+
+          <p>四月的樱草  悄悄在角落绽放<br>
+          你轻轻哼唱 风写下的乐章<br>
+          每次一撒娇 就融化我心房<br>
+          原来我喜欢 你的一切模样<br>
+          连无言都充满希望<br>
+          这世界如此大我们却相遇身旁<br>
+          感谢命运让我们彼此相望</p>
+
+          <p>You turn small storms into lavender steam<br>
+          You danced with the rain like it knew your name<br>
+          You made Thursdays feel like holidays<br>
+          And the quiet hours hum your name<br>
+          You’re not the sun, but you warm my days<br>
+          Not a singer, but I hear you always<br>
+          Some hearts don’t need to shout to be heard<br>
+          You’re the melody we always needed</p>
+
+          <p>今夜曼彻斯特低声吟唱<br>
+          月光盲盒再次轻响<br>
+          蜡烛点燃属于你的乐章</p>
+
+          <p>Ooh, ooh<br>
+          You make my world go boom<br>
+          So much for a chapter two<br>
+          If we choose life, then our story's just begun<br>
+          Ooh, ooh<br>
+          You make my world go boom<br>
+          And we could be chapter us</p>
+
+          <p>这一章 名为 neverending<br>
+          Happy birthday to our prism girl<br>
+          当未来再次响起这首歌<br>
+          Hope You’ll remember<br>
+          that you were loved, here<br>
+          in this chorus we keep close.<br>
+          We keep close from now until forever.</p>
+        </div>
       </div>
-<!-- 查看歌词按钮 -->
-  <div style="margin-top:1rem;">
-    <button onclick="toggleLyrics()">查看 / 收起歌词</button>
-  </div>
 
-  <!-- 歌词内容（默认隐藏），设置最大高度+可滚动 -->
-  <div id="lyricsBox" style="display:none;
-                             max-height:200px;
-                             overflow-y:auto;
-                             background:#fff5c3;
-                             border:1px dashed #835e29;
-                             margin-top:1rem;
-                             padding:0.5rem;
-                             color:#582d0e;
-                             font-size:0.9rem;">
-    <!-- 在这里写下你的歌词，可以是多段文字 -->
-    <p>Yesterday I found a book on how to love
-Took the title, changed the cover
-Made every line repeat your name — like a prayer
-</p>
-    <p>四月的风 轻拂泰晤士岸
-落花绕着你步伐旋转
-你眼里 藏着心跳的开关
-每次你眨眼 我就听见你说：
-Good morning.</p>
-    <p>教学楼雨滴 敲成节奏
-你手机画面 谁的侧脸停留
-Mr.张的对白 正好落进镜头
-才懂沉默也是你在为爱合奏
-Even silence has its melody
-When it’s you and me</p>
-       <p>月光洒下的那一刻
-你的笑容胜过世间一切绝色
-倒数的时间 心跳刚好配合
-You were blooming… blooming — beat by beat</p>
-       <p>四月的樱草  悄悄在角落绽放
-你轻轻哼唱 风写下的乐章
-每次一撒娇 就融化我心房
-原来我喜欢 你的一切模样
-连无言都充满希望
-这世界如此大我们却相遇身旁
-感谢命运让我们彼此相望
-</p>
-       <p>You turn small storms into lavender steam
-You danced with the rain like it knew your name
-You made Thursdays feel like holidays
-And the quiet hours hum your name​ You're not the sun, but you warm my days
-Not a singer, but I hear you always
-Some hearts don’t need to shout to be heard
-You’re the melody we always needed​</p>
-        <p>今夜曼彻斯特低声吟唱
-月光盲盒再次轻响
-蜡烛点燃属于你的乐章
-</p>
-        <p>Ooh, ooh
-You make my world go boom
-So much for a chapter two
-If we choose life, then our story's just begun
-Ooh, ooh
-You make my world go boom
-And we could be chapter us
-</p>
-        <p>这一章 名为 neverending
-Happy birthday to our prism girl
-当未来再次响起这首歌
-Hope You’ll remember
-that you were loved, here 
-in this chorus we keep close.
-We keep close from now until forever.
-</p>
-  </div>
-</div>
-
-<script>
-  // 简单的显示/隐藏函数
-  function toggleLyrics() {
-    let lyricsDiv = document.getElementById('lyricsBox');
-    if (lyricsDiv.style.display === 'none') {
-      lyricsDiv.style.display = 'block';
-    } else {
-      lyricsDiv.style.display = 'none';
-    }
-  }
-</script>
       <!-- 视频礼物内容 -->
       <div id="giftVideo" class="gift-content">
         <p>公主萌物照片大赏</p>
-        <!-- 本地视频示例 -->
+        <!-- 示例：本地视频 -->
         <video width="320" height="240" controls>
           <source src="your_video.mp4" type="video/mp4">
           你的浏览器不支持HTML5视频
@@ -481,7 +484,7 @@ We keep close from now until forever.
   </div>
 
   <script>
-    /* 开场动画（可删） */
+    /* 开场动画（若不需要，可删除这段） */
     function playZlhAudio() {
       const audio = document.getElementById('introAudio');
       audio.play().catch((err) => {
@@ -503,13 +506,23 @@ We keep close from now until forever.
       document.getElementById('modalOverlay').style.display = 'none';
     }
 
-    /* 礼物互动 显示/隐藏 */
+    /* 礼物互动显示/隐藏 */
     function toggleGiftContent(giftId) {
       const content = document.getElementById(giftId);
-      content.style.display = content.style.display === 'block' ? 'none' : 'block';
+      content.style.display = (content.style.display === 'block') ? 'none' : 'block';
     }
 
-    /* 许愿池 */
+    /* 歌词折叠：显示/隐藏 */
+    function toggleLyrics() {
+      let lyricsDiv = document.getElementById('lyricsBox');
+      if (lyricsDiv.style.display === 'none') {
+        lyricsDiv.style.display = 'block';
+      } else {
+        lyricsDiv.style.display = 'none';
+      }
+    }
+
+    /* 许愿池功能 */
     function throwCoin() {
       const inputVal = document.getElementById('wishInput').value.trim();
       const wishResponse = document.getElementById('wishResponse');
@@ -522,7 +535,7 @@ We keep close from now until forever.
       }
     }
 
-    // 可在需要时机自动显示结束语
+    // 如果要自动显示结束语，可在需要时机加定时触发
     // window.addEventListener('load', () => {
     //   setTimeout(() => {
     //     document.getElementById('endingDialog').style.display = 'block';
@@ -531,3 +544,4 @@ We keep close from now until forever.
   </script>
 </body>
 </html>
+
