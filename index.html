@@ -3,18 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <title>Stardew Birthday Celebration</title>
+  <!-- 在这里引入 Google Fonts 中的 Press Start 2P -->
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
     * {
-      margin: 0; 
+      margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: "Microsoft YaHei", sans-serif;
+      /* 把全局字体换成像素风 */
+      font-family: 'Press Start 2P', monospace;
     }
 
     /* 整页背景：模糊图片 */
     body {
-      margin: 0;
-      padding: 0;
       background: url("birthday_bg_blurred.png") center/cover no-repeat;
       /* 如果想让背景固定不动，可加:
          background-attachment: fixed; 
@@ -27,20 +29,21 @@
       padding: 1rem;
     }
 
-    /* 将标题文字改为白色提高对比度 */
+    /* 保持标题白色 + 像素字体 */
     .section-title {
       text-align: center;
-      font-size: 1.8rem;
+      font-size: 1.6rem; /* 原来是1.8rem，Press Start 2P字比较紧凑，可以稍微调一下 */
       margin: 1rem 0;
-      color: #fff; /* 改成白色 */
+      color: #fff;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
     }
 
     .welcome-section {
       position: relative;
       padding: 2rem;
-      background: transparent; 
+      background: transparent;
       text-align: center;
-      color: #fff; /* 保持白色文字 */
+      color: #fff;
       border: 4px solid #835e29;
     }
     .welcome-banner {
@@ -49,7 +52,7 @@
       padding: 0.5rem 1rem;
       background: rgba(255, 245, 195, 0.8);
       color: #835e29;
-      font-size: 1.2rem;
+      font-size: 1rem; /* 调整一点，避免Press Start 2P过大 */
       border: 2px solid #835e29;
     }
     .dialog-box {
@@ -58,14 +61,13 @@
       background: #fff5c3;
       border: 4px solid #835e29;
       box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-      font-size: 1.1rem;
+      font-size: 1rem;
       max-width: 600px;
       margin-left: auto;
       margin-right: auto;
-      color: #582d0e; /* 在浅色背景上，这个深棕色可读性不错 */
+      color: #582d0e;
     }
 
-    /* 村民名字改成白色，以免跟背景混 */
     .villagers {
       display: flex;
       flex-wrap: wrap;
@@ -85,14 +87,14 @@
     }
     .villager p {
       margin-top: 0.5rem;
-      font-size: 0.9rem;
-      color: #fff; /* 改成白色 */
+      font-size: 0.7rem; /* Press Start 2P比较大，可以适当缩小 */
+      color: #fff;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
     }
 
-    /* 弹窗 */
     .modal-overlay {
       position: fixed;
-      top: 0; 
+      top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
@@ -108,9 +110,9 @@
       max-width: 400px;
       text-align: center;
       color: #582d0e;
+      font-size: 1rem;
     }
 
-    /* 礼物互动区 */
     .gifts {
       display: flex;
       flex-wrap: wrap;
@@ -125,7 +127,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1rem;
+      font-size: 0.8rem;
       color: #835e29;
       cursor: pointer;
       text-align: center;
@@ -137,11 +139,10 @@
       border: 2px dashed #835e29;
       margin-top: 1rem;
       padding: 1rem;
-      font-size: 1rem;
+      font-size: 0.9rem;
       color: #582d0e;
     }
 
-    /* 许愿池 */
     .wish-section {
       text-align: center;
       margin: 2rem 0;
@@ -149,6 +150,7 @@
     .wish-section input {
       padding: 0.5rem;
       margin-right: 0.5rem;
+      font-size: 0.8rem;
     }
     .wish-response {
       margin-top: 1rem;
@@ -157,9 +159,9 @@
       border: 2px dashed #835e29;
       display: none;
       color: #582d0e;
+      font-size: 0.9rem;
     }
 
-    /* 结束语 */
     .ending-dialog {
       margin: 2rem 0;
       padding: 1rem;
@@ -168,9 +170,10 @@
       text-align: center;
       color: #582d0e;
       display: none;
+      font-size: 0.9rem;
     }
 
-    /* 开场动画覆盖层（若不需要可删） */
+    /* 开场动画覆盖层（可选） */
     .intro-overlay {
       position: fixed;
       top: 0; 
@@ -202,7 +205,7 @@
       border: 4px solid #835e29;
       padding: 1rem;
       color: #582d0e;
-      font-size: 1.1rem;
+      font-size: 0.9rem;
     }
     .intro-buttons {
       margin-top: 1rem;
@@ -211,11 +214,12 @@
       margin: 0.5rem;
       padding: 0.5rem 1rem;
       cursor: pointer;
+      font-size: 0.8rem;
     }
   </style>
 </head>
 <body>
-  <!-- 开场动画（可选） -->
+  <!-- 开场动画覆盖层（可选） -->
   <div class="intro-overlay" id="introOverlay">
     <div class="intro-content">
       <img src="pixel_zhanglinghe.png" alt="像素风张凌赫" />
@@ -270,7 +274,7 @@
       </div>
     </section>
 
-    <!-- 五个弹窗示例 -->
+    <!-- 5个弹窗示例 -->
     <div id="modalOverlay" class="modal-overlay" onclick="closeModal()">
       <div class="modal" id="modal1">
         <p>典典：我还记得你去年冬天一直陪我走过那段忙乱的日子。<br>今天，换我陪你慢一点，好吗？</p>
