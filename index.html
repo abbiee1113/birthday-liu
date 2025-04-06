@@ -411,7 +411,64 @@
                     margin-top:1rem;
                     padding:0.5rem;">
           <!-- 这里是歌词内容 -->
-          <p>... 你的歌词 ...</p>
+          <p>Yesterday I found a book on how to love<br>
+          Took the title, changed the cover<br>
+          Made every line repeat your name — like a prayer</p>
+
+          <p>四月的风 轻拂泰晤士岸<br>
+          落花绕着你步伐旋转<br>
+          你眼里 藏着心跳的开关<br>
+          每次你眨眼 我就听见你说：<br>
+          Good morning.</p>
+
+          <p>教学楼雨滴 敲成节奏<br>
+          你手机画面 谁的侧脸停留<br>
+          Mr.张的对白 正好落进镜头<br>
+          才懂沉默也是你在为爱合奏<br>
+          Even silence has its melody<br>
+          When it’s you and me</p>
+
+          <p>月光洒下的那一刻<br>
+          你的笑容胜过世间一切绝色<br>
+          倒数的时间 心跳刚好配合<br>
+          You were blooming… blooming — beat by beat</p>
+
+          <p>四月的樱草  悄悄在角落绽放<br>
+          你轻轻哼唱 风写下的乐章<br>
+          每次一撒娇 就融化我心房<br>
+          原来我喜欢 你的一切模样<br>
+          连无言都充满希望<br>
+          这世界如此大我们却相遇身旁<br>
+          感谢命运让我们彼此相望</p>
+
+          <p>You turn small storms into lavender steam<br>
+          You danced with the rain like it knew your name<br>
+          You made Thursdays feel like holidays<br>
+          And the quiet hours hum your name<br>
+          You’re not the sun, but you warm my days<br>
+          Not a singer, but I hear you always<br>
+          Some hearts don’t need to shout to be heard<br>
+          You’re the melody we always needed</p>
+
+          <p>今夜曼彻斯特低声吟唱<br>
+          月光盲盒再次轻响<br>
+          蜡烛点燃属于你的乐章</p>
+
+          <p>Ooh, ooh<br>
+          You make my world go boom<br>
+          So much for a chapter two<br>
+          If we choose life, then our story's just begun<br>
+          Ooh, ooh<br>
+          You make my world go boom<br>
+          And we could be chapter us</p>
+
+          <p>这一章 名为 neverending<br>
+          Happy birthday to our prism girl<br>
+          当未来再次响起这首歌<br>
+          Hope You’ll remember<br>
+          that you were loved, here<br>
+          in this chorus we keep close.<br>
+          We keep close from now until forever.</p>
         </div>
       </div>
 
@@ -471,7 +528,7 @@
       lyricsDiv.style.display = (lyricsDiv.style.display === 'none') ? 'block' : 'none';
     }
 
-    /* 许愿后 -> 5秒后显示结束语 overlay -> 再5秒后自动收起 */
+    /* 许愿后 -> 3秒后显示结束语 overlay -> 再3秒后自动收起 */
     function throwCoin() {
       const inputVal = document.getElementById('wishInput').value.trim();
       const wishResponse = document.getElementById('wishResponse');
@@ -483,17 +540,17 @@
         wishResponse.style.display = 'block';
       }
 
-      // 5秒后显示"结束语" overlay
+      // 3秒后显示"结束语" overlay
       setTimeout(() => {
         const endingOverlay = document.getElementById('endingOverlay');
         endingOverlay.style.display = 'flex';
 
-        // 再过5秒自动隐藏
+        // 再过3秒自动隐藏
         setTimeout(() => {
           endingOverlay.style.display = 'none';
-        }, 5000);
+        }, 3000);
 
-      }, 5000);
+      }, 3000);
     }
   </script>
 </body>
